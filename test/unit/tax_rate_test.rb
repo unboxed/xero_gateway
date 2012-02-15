@@ -33,6 +33,7 @@ class TaxRateTest < Test::Unit::TestCase
        tax_rate.can_apply_to_revenue     = false
        tax_rate.display_tax_rate         = 12.500
        tax_rate.effective_rate           = 12.500
+       tax_rate.status                   = "PENDING"
     end
   end
 end

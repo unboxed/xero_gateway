@@ -11,7 +11,8 @@ module XeroGateway
         "CanApplyToLiabilities" => :boolean,
         "CanApplyToRevenue"     => :boolean,
         "DisplayTaxRate"        => :float,
-        "EffectiveRate"         => :float
+        "EffectiveRate"         => :float,
+        "Status"                => :string
       }
     end
     
