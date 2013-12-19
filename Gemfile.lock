@@ -3,6 +3,7 @@ GEM
   specs:
     activesupport (3.0.0)
     builder (2.1.2)
+    i18n (0.6.9)
     libxml-ruby (2.7.0)
     mocha (0.9.8)
       rake
@@ -16,6 +17,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   builder (>= 2.1.2)
+  i18n
   libxml-ruby
   mocha
   oauth (>= 0.3.6)
