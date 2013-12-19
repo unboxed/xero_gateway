@@ -3,7 +3,7 @@ GEM
   specs:
     activesupport (3.0.0)
     builder (2.1.2)
-    libxml-ruby (1.1.4)
+    libxml-ruby (2.7.0)
     mocha (0.9.8)
       rake
     oauth (0.4.3)
