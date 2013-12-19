@@ -19,6 +19,13 @@ class TaxRateTest < Test::Unit::TestCase
     assert_equal tax_rate, result_tax_rate
   end
 
+  def test_raise_unknown_attributes
+    assert_raise(XeroGateway::TaxRate::UnknownAttributeError) do
+      tax_rate_element = parse_tax_rate(tax_rate_unknown_fixture)
+      XeroGateway::TaxRate.from_xml(tax_rate_element)
+    end
+  end
+
   private
 
   def parse_tax_rate(xml)
@@ -40,5 +47,9 @@ class TaxRateTest < Test::Unit::TestCase
 
   def create_test_tax_rate(params=tax_rate_params)
     XeroGateway::TaxRate.new(params)
+  end
+
+  def tax_rate_unknown_fixture
+    "<TaxRate><ReportTaxType>RINPUT</ReportTaxType></TaxRate>"
   end
 end
