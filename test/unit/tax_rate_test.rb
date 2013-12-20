@@ -26,6 +26,13 @@ class TaxRateTest < Test::Unit::TestCase
     end
   end
 
+  def test_ignore_unknown_attributes
+    assert_nothing_raised do
+      tax_rate_element = parse_tax_rate(tax_rate_unknown_fixture)
+      XeroGateway::TaxRate.from_xml(tax_rate_element, :ignore_unknown_attributes => true)
+    end
+  end
+
   private
 
   def parse_tax_rate(xml)

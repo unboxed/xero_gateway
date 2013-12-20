@@ -43,7 +43,7 @@ module XeroGateway
       end
     end
 
-    def self.from_xml(tax_rate_element)
+    def self.from_xml(tax_rate_element, options = {})
       TaxRate.new.tap do |tax_rate|
         tax_rate_element.children.each do |element|
 
@@ -55,7 +55,7 @@ module XeroGateway
             when :float   then  tax_rate.send("#{underscored_attribute}=", element.text.to_f)
             when :string  then  tax_rate.send("#{underscored_attribute}=", element.text)
           else
-            raise UnknownAttributeError, "Unknown attribute: #{attribute}"
+            raise UnknownAttributeError, "Unknown attribute: #{attribute}" unless options[:ignore_unknown_attributes]
           end
         end
       end
