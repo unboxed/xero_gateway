@@ -50,14 +50,13 @@ module XeroGateway
           attribute             = element.name
           underscored_attribute = element.name.underscore
 
-          raise UnknownAttributeError, "Unknown attribute: #{attribute}" unless ATTRS.keys.include?(attribute)
-
           case (ATTRS[attribute])
             when :boolean then  tax_rate.send("#{underscored_attribute}=", (element.text == "true"))
             when :float   then  tax_rate.send("#{underscored_attribute}=", element.text.to_f)
-            else                tax_rate.send("#{underscored_attribute}=", element.text)
+            when :string  then  tax_rate.send("#{underscored_attribute}=", element.text)
+          else
+            raise UnknownAttributeError, "Unknown attribute: #{attribute}"
           end
-
         end
       end
     end
